@@ -8,7 +8,6 @@ import logo from "../../assets/logo/santol_logo.png";
 import { LoadingProvider, useLoading } from "../LoadingContext";
 import LoadingSpinner from "../Loading";
 import CustomToastContainer from "../Toast/CustomToast";
-import { createActivityLog } from "../../api/activityLogApi";
 import ConfirmationModal from "../modals/ConfirmationModal";
 
 // UserContext to provide user role throughout the app
@@ -43,17 +42,6 @@ const Layout = ({ children, title = "Barangay Santoleño", links = [], logoImg =
     setLogoutLoading(true);
     try {
       const userData = JSON.parse(localStorage.getItem("userData") || "{}");
-
-      // Create activity log before logging out
-      try {
-        await createActivityLog({
-          account: userData.id, // Changed from account_id to account
-          module: "Auth",
-          remark: `User logged out`,
-        });
-      } catch (logError) {
-        console.error("Failed to create logout activity log:", logError);
-      }
 
       const res = await logout(userData.email || "", userData.password || "");
       showCustomToast(res.message || "Logout successful", "success");

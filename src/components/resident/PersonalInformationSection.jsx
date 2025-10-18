@@ -1,7 +1,15 @@
 import React from 'react';
-import { FaVenusMars, FaBirthdayCake } from 'react-icons/fa';
+import { FaVenusMars, FaBirthdayCake, FaHeart } from 'react-icons/fa';
 
 const PersonalInformationSection = ({ formData, handleChange, errors, styleClasses }) => {
+  const civilStatusOptions = [
+    { value: 'single', label: 'Single' },
+    { value: 'married', label: 'Married' },
+    { value: 'widowed', label: 'Widowed' },
+    { value: 'divorced', label: 'Divorced' },
+    { value: 'separated', label: 'Separated' }
+  ];
+
   return (
     <section className={styleClasses.section}>
       <h2 className="text-lg font-medium text-gray-800 mb-3">Personal Information</h2>
@@ -79,6 +87,28 @@ const PersonalInformationSection = ({ formData, handleChange, errors, styleClass
               </select>
             </div>
             {errors.sex && <p className="mt-1 text-sm text-red-500">{errors.sex}</p>}
+          </div>
+
+          <div>
+            <label htmlFor="civil_status" className={styleClasses.label}>Civil Status *</label>
+            <div className="relative">
+              <FaHeart className={styleClasses.icon} />
+              <select
+                id="civil_status"
+                name="civil_status"
+                value={formData.civil_status}
+                onChange={handleChange}
+                className={styleClasses.inputWithIcon}
+              >
+                <option value="">Select Civil Status</option>
+                {civilStatusOptions.map(option => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+            {errors.civil_status && <p className="mt-1 text-sm text-red-500">{errors.civil_status}</p>}
           </div>
 
           <div>

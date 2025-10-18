@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Register from "../components/Register"; 
@@ -42,6 +43,7 @@ const RegisterPage = () => {
   const [navOpen, setNavOpen] = useState(false);
   const [errors, setErrors] = useState({});
   const [resetSignal, setResetSignal] = useState(0); // Add reset signal
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     let updatedForm;
@@ -121,9 +123,13 @@ const RegisterPage = () => {
 
       const res = await register(formData);
       setSuccess(res);
-      setForm(initialState);
-      setResetSignal((prev) => prev + 1);  
-      showCustomToast("Registration successful!", "success");
+      showCustomToast("Registration successful! Redirecting to login...", "success");
+      
+      // Redirect to login page after successful registration
+      setTimeout(() => {
+        navigate("/login");
+      }, 2000); // 2 second delay to show the success message
+      
     } catch (err) {
       setErrors(err);
       // Show first error message in toast

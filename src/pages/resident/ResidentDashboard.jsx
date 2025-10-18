@@ -69,17 +69,17 @@ const ResidentDashboard = () => {
   ];
 
   const RequestCard = ({ request }) => (
-    <div className="flex items-center justify-between p-4 hover:bg-gray-50 transition-colors">
+    <div className="flex items-center justify-between p-4 hover:bg-gray-50 hover:pl-6 transition-all duration-200 cursor-pointer group">
       <div className="flex items-center gap-4">
-        <div className={`h-2 w-2 rounded-full ${
+        <div className={`h-2 w-2 rounded-full transition-transform duration-200 group-hover:scale-125 ${
           request.status === 'pending' ? 'bg-amber-500' :
           request.status === 'processing' ? 'bg-blue-500' :
           request.status === 'approved' ? 'bg-emerald-500' :
           'bg-red-500'
         }`} />
         <div>
-          <p className="text-sm font-medium text-gray-900">{request.document_details?.document_name}</p>
-          <p className="text-xs text-gray-500">{new Date(request.created_at).toLocaleDateString()}</p>
+          <p className="text-sm font-medium text-gray-900 group-hover:text-red-700 transition-colors duration-200">{request.document_details?.document_name}</p>
+          <p className="text-xs text-gray-500 group-hover:text-gray-600 transition-colors duration-200">{new Date(request.created_at).toLocaleDateString()}</p>
         </div>
       </div>
       <span className="text-xs font-medium px-2 py-1 rounded-full bg-gray-100 text-gray-600">
@@ -106,15 +106,15 @@ const ResidentDashboard = () => {
           <Link
             key={index}
             to={stat.label === "Active Cases" ? "/resident/blotter/my-cases" : "/resident/certificates/my-requests"}
-            className="p-4 bg-white border border-gray-100 rounded-lg hover:border-gray-200 transition-colors"
+            className="p-4 bg-white border border-gray-100 rounded-lg hover:border-gray-200 hover:shadow-md hover:scale-105 transition-all duration-200 cursor-pointer group"
           >
             <div className="flex items-center gap-3">
-              <div className={`${stat.color}`}>
+              <div className={`${stat.color} transition-transform duration-200 group-hover:scale-110`}>
                 {stat.icon}
               </div>
               <div>
-                <p className="text-sm text-gray-600">{stat.label}</p>
-                <p className="text-xl font-semibold mt-1">{stat.value}</p>
+                <p className="text-sm text-gray-600 group-hover:text-gray-700 transition-colors duration-200">{stat.label}</p>
+                <p className="text-xl font-semibold mt-1 group-hover:text-red-700 transition-colors duration-200">{stat.value}</p>
               </div>
             </div>
           </Link>

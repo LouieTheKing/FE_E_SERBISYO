@@ -6,7 +6,6 @@ import AddressInformation from '../../components/Profile/AddressInformation';
 import EditProfileModal from '../../components/Profile/EditProfileModal';
 import { useUser } from '../../contexts/UserContext';
 import { toast } from 'react-toastify';
-import { createActivityLog } from '../../api/activityLogApi';
 import { updatePassword } from '../../api/accountApi';
 import ChangePasswordModal from '../../components/modals/ChangePasswordModal';
 
@@ -28,11 +27,6 @@ const MyProfile = () => {
 
   const handleProfileUpdate = async (updatedProfile) => {
     try {
-      await createActivityLog({
-        account: currentUser.id,
-        module: "Profile",
-        remark: "Updated profile information"
-      });
       setIsEditModalOpen(false);
     } catch (error) {
       console.error('Failed to log profile update:', error);
@@ -55,11 +49,6 @@ const MyProfile = () => {
     try {
       setIsPasswordLoading(true);
       await updatePassword(currentUser.id, passwordData);
-      await createActivityLog({
-        account: currentUser.id,
-        module: "Profile",
-        remark: "Updated password"
-      });
       toast.success('Password updated successfully');
       setIsPasswordModalOpen(false);
     } catch (error) {

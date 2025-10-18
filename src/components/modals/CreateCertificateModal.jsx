@@ -182,7 +182,7 @@ const CreateCertificateModal = ({ isOpen, onClose, onSuccess }) => {
               />
               <label
                 htmlFor="template"
-                className="flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 border border-gray-300"
+                className="flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 hover:shadow-sm hover:scale-105 border border-gray-300 transition-all duration-200"
               >
                 <FaCloudUploadAlt className="w-4 h-4" />
                 {formData.template ? 'Change Template' : 'Upload Template'}

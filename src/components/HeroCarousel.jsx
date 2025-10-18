@@ -30,10 +30,10 @@ const NavigationDots = memo(({ count, activeIndex, onDotClick }) => (
       <button
         key={i}
         onClick={() => onDotClick(i)}
-        className={`h-2 rounded-full transition-all duration-300 ${
+        className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
           i === activeIndex
             ? "w-6 bg-red-900"
-            : "w-2 bg-gray-300 hover:bg-gray-400"
+            : "w-2 bg-gray-300 hover:bg-gray-400 hover:scale-125"
         }`}
       />
     ))}

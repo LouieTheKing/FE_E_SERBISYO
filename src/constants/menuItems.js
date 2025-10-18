@@ -59,6 +59,7 @@ const adminMenu = [
   { to: "/admin/feedback", label: "Feedback Reports", icon: FaCommentDots },
   { to: "/admin/configurations", label: "System Configuration", icon: FaCog },
   { to: "/admin/activity-logs", label: "Activity Logs", icon: FaChartBar },
+  { to: "/admin/reports", label: "Reports & Analytics", icon: FaChartBar },
   { to: "/admin/profile", label: "My Profile", icon: FaUserAlt },
 ];
 

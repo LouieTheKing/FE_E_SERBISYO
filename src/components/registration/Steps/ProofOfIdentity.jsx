@@ -34,7 +34,7 @@ const ProofOfIdentity = ({ handleFileChange, previews, stepErrors }) => {
         />
         <label
           htmlFor={id}
-          className="inline-flex items-center px-3 py-2 sm:px-4 sm:py-2 bg-red-900 text-white text-sm rounded-lg cursor-pointer hover:bg-red-800 transition-colors"
+          className="inline-flex items-center px-3 py-2 sm:px-4 sm:py-2 bg-red-900 text-white text-sm rounded-lg cursor-pointer hover:bg-red-800 hover:shadow-md hover:scale-105 transition-all duration-200"
         >
           {preview ? 'Change Photo' : `Upload ${title}`}
         </label>

@@ -38,14 +38,16 @@ const InputField = ({
             border ${error ? 'border-red-300' : 'border-gray-300'}
             rounded-lg
             focus:outline-none
-            focus:ring-1
+            focus:ring-2
             ${error 
               ? 'focus:ring-red-500 focus:border-red-500' 
-              : 'focus:ring-gray-500 focus:border-gray-500'
+              : 'focus:ring-red-500 focus:border-red-500'
             }
+            hover:border-gray-400
             disabled:bg-gray-50
             disabled:text-gray-500
-            transition-colors
+            disabled:cursor-not-allowed
+            transition-all duration-200
             ${className}
           `}
           placeholder={placeholder}

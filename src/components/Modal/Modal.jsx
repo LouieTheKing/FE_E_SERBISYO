@@ -46,6 +46,7 @@ const Modal = ({
         onClick={e => e.stopPropagation()}
       >
         {/* Header */}
+        {/* Header */}
         <div className="px-6 py-4 border-b border-gray-100">
           <div className="flex justify-between items-center">
             <h3 id="modal-title" className="text-lg font-semibold text-gray-900">
@@ -54,16 +55,14 @@ const Modal = ({
             {showCloseButton && (
               <button
                 onClick={onClose}
-                className="rounded-lg p-1 text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-all"
+                className="rounded-lg p-1 text-gray-400 hover:text-gray-600 hover:bg-gray-100 hover:scale-110 transition-all duration-200 cursor-pointer"
                 aria-label="Close modal"
               >
                 <IoClose className="w-5 h-5" />
               </button>
             )}
           </div>
-        </div>
-
-        {/* Content */}
+        </div>        {/* Content */}
         <div className="px-6 py-4 max-h-[calc(100vh-12rem)] overflow-y-auto">
           {children}
         </div>

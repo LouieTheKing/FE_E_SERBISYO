@@ -1,17 +1,40 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
+import configService from "../utils/configService";
 
 const Navbar = ({
   navOpen,
   setNavOpen,
   logo,
-  title = "Barangay Santoleño",
+  title,
   showSidebar = false,
   isMobile = false,
 }) => {
   const location = useLocation();
   const isLandingPage = location.pathname === "/";
+  const [appName, setAppName] = useState(title || "Barangay Santoleño");
+
+  useEffect(() => {
+    // Get app name from configuration
+    const getAppName = () => {
+      const configuredName = configService.getConfigValue('app_header');
+      setAppName(configuredName);
+    };
+
+    // Initial load
+    getAppName();
+
+    // Set up interval to check for config updates
+    const interval = setInterval(() => {
+      if (configService.isCacheExpired()) {
+        // Cache is expired, configs will be refreshed on next API call
+        getAppName();
+      }
+    }, 30000); // Check every 30 seconds
+
+    return () => clearInterval(interval);
+  }, [title]);
 
   const handleLogoClick = (e) => {
     if (isLandingPage) {
@@ -36,7 +59,7 @@ const Navbar = ({
           <img src={logo} alt="Logo" className="h-10 w-10 rounded-full object-cover bg-white/80 border border-white shadow" />
         )}
         <span className="text-sm font-bold text-white tracking-tight uppercase hidden sm:inline sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-xl transition-all duration-200">
-          {title}
+          {appName}
         </span>
       </Link>
 

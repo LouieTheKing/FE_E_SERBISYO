@@ -193,7 +193,7 @@ const RequestDocumentModal = ({
                   />
                   <label
                     htmlFor={`req_${req.id}`}
-                    className="flex items-center gap-2 px-3 py-1.5 text-xs bg-white border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer"
+                    className="flex items-center gap-2 px-3 py-1.5 text-xs bg-white border border-gray-200 rounded-lg hover:bg-gray-50 hover:border-gray-300 hover:shadow-sm cursor-pointer transition-all duration-200 hover:scale-105"
                   >
                     <FaUpload className="w-4 h-4" />
                     {formData.requirements.find(r => r.requirement_id === req.id) 

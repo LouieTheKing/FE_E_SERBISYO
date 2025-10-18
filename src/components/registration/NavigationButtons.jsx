@@ -32,10 +32,10 @@ const NavigationButtons = ({
           type="button"
           onClick={handleSubmit}
           disabled={!isValid || isLoading}
-          className={`px-8 py-3 rounded-xl font-bold transition-all duration-200 text-white ${
+          className={`px-8 py-3 rounded-xl font-bold transition-all duration-200 text-white cursor-pointer ${
             isValid && !isLoading
-              ? 'bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800'
-              : 'bg-gray-400 cursor-not-allowed'
+              ? 'bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 hover:shadow-lg hover:scale-105'
+              : 'bg-gray-400 cursor-not-allowed opacity-75'
           }`}
         >
           {isLoading ? 'Submitting...' : 'Submit Registration'}
@@ -44,7 +44,7 @@ const NavigationButtons = ({
         <button
           type="button"
           onClick={nextStep}
-          className="px-6 py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800"
+          className="px-6 py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer"
         >
           Next
         </button>

@@ -8,6 +8,7 @@ import { Settings } from 'lucide-react';
 import { getConfigurations, createConfiguration, updateConfiguration, deleteConfiguration } from '../../api/configApi';
 import { showCustomToast } from '../../components/Toast/CustomToast';
 import ConfirmationModal from '../../components/modals/ConfirmationModal';
+import configService from '../../utils/configService';
 
 const ConfigurationManagement = () => {
   const [configurations, setConfigurations] = useState([]);
@@ -73,6 +74,10 @@ const ConfigurationManagement = () => {
     try {
       setIsSubmitting(true);
       await createConfiguration(formData);
+      
+      // Clear configuration cache to force fresh fetch
+      configService.clearCache();
+      
       showCustomToast('Configuration created successfully', 'success');
       setShowCreateModal(false);
       setFormData({ name: '', value: '' });
@@ -92,6 +97,10 @@ const ConfigurationManagement = () => {
     try {
       setIsSubmitting(true);
       await updateConfiguration(selectedConfig.id, formData);
+      
+      // Clear configuration cache to force fresh fetch
+      configService.clearCache();
+      
       showCustomToast('Configuration updated successfully', 'success');
       setShowEditModal(false);
       setFormData({ name: '', value: '' });
@@ -109,6 +118,10 @@ const ConfigurationManagement = () => {
     try {
       setIsSubmitting(true);
       await deleteConfiguration(selectedConfig.id);
+      
+      // Clear configuration cache to force fresh fetch
+      configService.clearCache();
+      
       showCustomToast('Configuration deleted successfully', 'success');
       setShowDeleteModal(false);
       setSelectedConfig(null);
@@ -162,9 +175,9 @@ const ConfigurationManagement = () => {
       label: 'Value',
       accessor: 'value',
       sortable: true,
-      render: (value) => (
-        <span className="text-gray-700">{value}</span>
-      )
+      type: 'auto', // This will auto-detect URLs and handle them appropriately
+      maxLength: 50, // Customize truncation length for non-URL values
+      // Remove the custom render function to let the DataTable handle URL detection
     },
     {
       label: 'Last Updated',
@@ -197,14 +210,6 @@ const ConfigurationManagement = () => {
 
       {/* Main Content */}
       <div className="bg-white rounded-lg shadow-sm border border-gray-100">
-        <div className="px-6 py-4 border-b border-gray-100">
-          <h3 className="text-lg font-medium text-gray-800">
-            Configuration Settings
-          </h3>
-          <p className="text-sm text-gray-500 mt-1">
-            View and manage system configuration values
-          </p>
-        </div>
 
         <div className="p-6">
           <DataTable

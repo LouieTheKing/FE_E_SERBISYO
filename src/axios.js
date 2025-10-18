@@ -1,4 +1,5 @@
 import axios from "axios";
+import configService from './utils/configService';
 
 // Helper to access loading context outside React tree
 let loadingContext = null;
@@ -10,6 +11,9 @@ export function setLoadingContext(ctx) {
 const UNAUTHORIZED = 401;
 const EXEMPTED_PATHS = ["/login"];
 
+// Flag to prevent infinite loops when fetching configs
+let isFetchingConfigs = false;
+
 const axiosInstance = axios.create({
    baseURL: BASE_URL,
    headers: {
@@ -19,16 +23,31 @@ const axiosInstance = axios.create({
 });
 
 axiosInstance.interceptors.request.use(
-  (config) => {
+  async (config) => {
     const token = localStorage.getItem("token");
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
+
+    // Fetch configurations on each request (with cooldown)
+    // Skip if we're already fetching configs or if it's the config endpoint itself
+    if (!isFetchingConfigs && !config.url?.includes('/configs')) {
+      try {
+        isFetchingConfigs = true;
+        await configService.getConfigurations();
+      } catch (error) {
+        console.warn('Failed to update configurations:', error);
+      } finally {
+        isFetchingConfigs = false;
+      }
+    }
+
     // Use loading context if available
     if (loadingContext && loadingContext.show) loadingContext.show();
     return config;
   },
   (error) => {
+    isFetchingConfigs = false;
     if (loadingContext && loadingContext.hide) loadingContext.hide();
     return Promise.reject(error);
   }
@@ -48,6 +67,8 @@ axiosInstance.interceptors.response.use(
         localStorage.removeItem("token");
         localStorage.removeItem("userData");
         localStorage.removeItem("userRole");
+        // Also clear config cache on logout
+        configService.clearCache();
          window.location.href = "/login";
       }
     }

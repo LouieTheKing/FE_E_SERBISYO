@@ -17,7 +17,6 @@ const LandingPage = () => {
         navOpen={navOpen} 
         setNavOpen={setNavOpen}
         logo={logo}
-        title="Barangay Santoleño"
       />
       <HeroSection />
       <AnnouncementsSection />

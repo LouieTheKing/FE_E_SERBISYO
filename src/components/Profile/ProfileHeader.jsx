@@ -51,7 +51,7 @@ const ProfileHeader = ({ profile, imagePreview, handleImageChange, fileInputRef,
         </h2>
         <button
           onClick={onEdit}
-          className="inline-flex items-center px-3 py-1.5 text-sm font-medium text-red-900 bg-red-50 rounded-md hover:bg-red-100 transition-colors"
+          className="inline-flex items-center px-3 py-1.5 text-sm font-medium text-red-900 bg-red-50 rounded-md hover:bg-red-100 hover:text-red-800 hover:shadow-sm transition-all duration-200 cursor-pointer hover:scale-105"
         >
           <FaEdit className="w-4 h-4 mr-1.5" />
           Edit Profile

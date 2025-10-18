@@ -2,9 +2,12 @@ import React, { useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
 import barangayBg from "../../assets/background/santol_hall.jpg";
 import santolLogo from '../../assets/logo/santol_logo.png';
+import { useConfig } from '../../hooks/useConfig'
 
 const HeroSection = () => {
   const location = useLocation();
+  const appName = useConfig('app_name')
+  const barangay = useConfig('barangay')
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   }, [location.pathname]);
@@ -28,11 +31,11 @@ const HeroSection = () => {
           />
 
           <h2 className="text-white/90 text-lg sm:text-xl font-medium tracking-wide mb-4">
-            Barangay Santol
+            Barangay {barangay}
           </h2>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
-            E-Serbisyo
+            {appName}
           </h1>
 
           <div className="w-16 h-1 bg-red-800 mx-auto mb-8" />

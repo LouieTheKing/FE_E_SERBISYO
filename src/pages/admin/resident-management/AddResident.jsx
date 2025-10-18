@@ -18,6 +18,7 @@ const AddResident = () => {
     last_name: '',
     suffix: '',
     sex: '',
+    civil_status: '',
     birthday: '',
     contact_no: '',
     birth_place: '',
@@ -121,6 +122,11 @@ const AddResident = () => {
     const sexError = validators.validateSex(formData.sex);
     if (sexError) newErrors.sex = sexError;
 
+    // Civil status validation
+    if (!formData.civil_status) {
+      newErrors.civil_status = 'Civil status is required';
+    }
+
     const birthdayError = validators.validateBirthday(formData.birthday);
     if (birthdayError) newErrors.birthday = birthdayError;
 
@@ -172,6 +178,7 @@ const AddResident = () => {
           last_name: '',
           suffix: '',
           sex: '',
+          civil_status: '',
           birthday: '',
           contact_no: '',
           birth_place: '',

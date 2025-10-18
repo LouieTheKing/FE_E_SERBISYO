@@ -207,9 +207,9 @@ const WorkerDashboard= () => {
               <button
                 key={idx}
                 onClick={action.onClick}
-                className={`${action.color} bg-white border-2 p-3 rounded-lg transition-colors duration-200 flex flex-col items-center gap-2 hover:shadow-sm`}
+                className={`${action.color} bg-white border-2 p-3 rounded-lg transition-all duration-200 flex flex-col items-center gap-2 hover:shadow-md cursor-pointer hover:scale-105 hover:-translate-y-1`}
               >
-                <div>{action.icon}</div>
+                <div className="transition-transform duration-200 hover:scale-110">{action.icon}</div>
                 <span className="text-xs font-medium text-center">
                   {action.label}
                 </span>
@@ -221,7 +221,7 @@ const WorkerDashboard= () => {
         {/* Stats Cards Section */}
         <div className="relative w-full mb-8">
           <button
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white border border-gray-300 rounded-full p-1.5 text-gray-600 hover:bg-gray-50 transition-colors shadow-sm hidden sm:block"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white border border-gray-300 rounded-full p-1.5 text-gray-600 hover:bg-gray-50 hover:border-gray-400 hover:shadow-md hover:scale-110 transition-all duration-200 shadow-sm hidden sm:block cursor-pointer"
             onClick={() => scroll("left")}
             aria-label="Scroll left"
           >
@@ -244,7 +244,7 @@ const WorkerDashboard= () => {
             </div>
           </div>
           <button
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white border border-gray-300 rounded-full p-1.5 text-gray-600 hover:bg-gray-50 transition-colors shadow-sm hidden sm:block"
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white border border-gray-300 rounded-full p-1.5 text-gray-600 hover:bg-gray-50 hover:border-gray-400 hover:shadow-md hover:scale-110 transition-all duration-200 shadow-sm hidden sm:block cursor-pointer"
             onClick={() => scroll("right")}
             aria-label="Scroll right"
           >

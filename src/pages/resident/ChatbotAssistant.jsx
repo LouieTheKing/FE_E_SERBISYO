@@ -263,7 +263,7 @@ const ChatbotAssistant = ({ isWidget = false, onClose }) => {
             className={`px-4 py-2 rounded-xl flex items-center gap-2 text-sm font-medium transition-all duration-200 ${
               isTyping || !input.trim()
                 ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                : 'bg-red-900 text-white hover:bg-red-800'
+                : 'bg-red-900 text-white hover:bg-red-800 hover:shadow-md hover:scale-105 cursor-pointer'
             }`}
           >
             <span className="hidden sm:inline">Ipadala</span>

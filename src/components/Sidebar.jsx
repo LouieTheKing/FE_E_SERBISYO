@@ -261,7 +261,7 @@ const UserSidebar = ({
       >
         <button
           onClick={toggleSidebar}
-          className="text-white hover:bg-red-700 p-2 rounded-lg transition-colors duration-200"
+          className="text-white hover:bg-red-700 hover:scale-110 p-2 rounded-lg transition-all duration-200 cursor-pointer"
           title={isCollapsed ? "Expand Sidebar" : "Collapse Sidebar"}
         >
           {isCollapsed ? (

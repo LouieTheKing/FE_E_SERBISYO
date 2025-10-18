@@ -32,6 +32,7 @@ import AnnouncementManagement from "./pages/admin/AnnouncementManagement";
 import ActivityLogs from "./pages/admin/ActivityLogs";
 import FeedbackManagement from "./pages/admin/FeedbackManagement";
 import ConfigurationManagement from "./pages/admin/ConfigurationManagement";
+import Reports from "./pages/admin/Reports";
 import PendingResidents from "./pages/admin/resident-management/PendingResidents";
 import RejectedResidents from "./pages/admin/resident-management/RejectedResidents";
 
@@ -149,6 +150,7 @@ function App() {
               <Route path="/admin/feedback" element={<FeedbackManagement />} />
               <Route path="/admin/configurations" element={<ConfigurationManagement />} />
               <Route path="/admin/activity-logs" element={<ActivityLogs />} />
+              <Route path="/admin/reports" element={<Reports />} />
               <Route path="/admin/profile" element={<MyProfile />} />
 
               {/* Worker Routes */}

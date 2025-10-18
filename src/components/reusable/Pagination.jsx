@@ -42,7 +42,7 @@ const Pagination = ({
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="p-2 text-gray-600 hover:text-gray-900 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
       >
         <ChevronLeft className="w-4 h-4" />
       </button>
@@ -55,10 +55,10 @@ const Pagination = ({
             ) : (
               <button
                 onClick={() => onPageChange(page)}
-                className={`min-w-[2rem] h-8 text-xs rounded-md transition-colors
+                className={`min-w-[2rem] h-8 text-xs rounded-md transition-all duration-200 cursor-pointer
                   ${currentPage === page 
-                    ? 'bg-red-900 text-white' 
-                    : 'text-gray-700 hover:bg-gray-100'
+                    ? 'bg-red-900 text-white shadow-md' 
+                    : 'text-gray-700 hover:bg-gray-100 hover:text-red-700 hover:shadow-sm hover:scale-105'
                   }`}
               >
                 {page}
@@ -71,7 +71,7 @@ const Pagination = ({
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="p-2 text-gray-600 hover:text-gray-900 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
       >
         <ChevronRight className="w-4 h-4" />
       </button>
